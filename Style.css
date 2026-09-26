@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background: #07100b;
+    align-items: center;
+    justify-content: center;    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+body::before,
+body::after{
+    content: "";
+    position: fixed;
+    inset: -35%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::before{
+    background:
+        radial-gradient(ellipse at 20% 35%, rgba(33, 178, 93, 0.28), transparent 34%),
+        radial-gradient(ellipse at 78% 28%, rgba(174, 222, 53, 0.18), transparent 30%),
+        radial-gradient(ellipse at 62% 78%, rgba(16, 119, 77, 0.25), transparent 36%);
+    filter: blur(28px);
+    animation: glow-drift 18s ease-in-out infinite alternate;
+}
+
+body::after{
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(184, 255, 199, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184, 255, 199, 0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 10%, transparent 78%);
+    animation: grid-drift 30s linear infinite;
+}
+
+@keyframes glow-drift{
+    from{ transform: translate3d(-3%, -2%, 0) scale(1); }
+    to{ transform: translate3d(3%, 2%, 0) scale(1.08); }
+}
+
+@keyframes grid-drift{
+    from{ transform: translate3d(0, 0, 0); }
+    to{ transform: translate3d(48px, 48px, 0); }
+}
+
+@media (prefers-reduced-motion: reduce){
+    body::before,
+    body::after{
+        animation: none;
+    }
+}
+
+h2{
+    color: white;
+    margin-bottom: 20px;
+}
+
+
+.resultado{
+    color: white;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+input{
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+    padding: 5px;
+    display: inline-block;
+}
+
+.input-min{
+    margin-right: 10px;
+}
+
+button{
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #45a049;
+}
+
+button:active{
+    background-color: #3e8e41;
+}
