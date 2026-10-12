@@ -9,12 +9,14 @@ body{
     font-family: 'Roboto', sans-serif;
     background: #07100b;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    overflow: hidden;
+    min-height: 100svh;
+    overflow-x: hidden;
     isolation: isolate;
+    padding: 24px 16px;
 }
 
 body::before,
@@ -65,37 +67,48 @@ body::after{
 h2{
     color: white;
     margin-bottom: 20px;
+    text-align: center;
 }
 
+.inputs-container{
+    display: flex;
+    gap: 10px;
+    width: min(100%, 410px);
+}
 
 .resultado{
     color: white;
     margin-top: 20px;
     font-size: 18px;
+    text-align: center;
 }
 
 input{
-    width: 200px;
-    height: 30px;
+    flex: 1;
+    min-width: 0;
+    height: 42px;
     border-radius: 5px;
     border: none;
-    margin-bottom: 10px;
     padding: 5px;
-    display: inline-block;
+    font: inherit;
 }
 
-.input-min{
-    margin-right: 10px;
+input:focus-visible,
+button:focus-visible{
+    outline: 2px solid #b6ff75;
+    outline-offset: 3px;
 }
 
 button{
-    width: 100px;
-    height: 30px;
+    width: min(100%, 180px);
+    min-height: 42px;
+    margin-top: 16px;
     border-radius: 5px;
     border: none;
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
+    font: inherit;
 }
 
 button:hover{
@@ -104,4 +117,18 @@ button:hover{
 
 button:active{
     background-color: #3e8e41;
+}
+
+@media (max-width: 480px){
+    h2{
+        font-size: 1.5rem;
+    }
+
+    .inputs-container{
+        flex-direction: column;
+    }
+
+    button{
+        width: min(100%, 410px);
+    }
 }
